@@ -13,6 +13,14 @@
         <sonar.host.url>http://13.53.119.232:900/</sonar.host.url>
     </properties>
 
+	<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>Nexus Release Repository</name>
+            <url>http://<NODE-IP>:<NODE-PORT>/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
