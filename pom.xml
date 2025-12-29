@@ -11,31 +11,12 @@
     <packaging>war</packaging>
 
     <name>Hello World Web Application</name>
+    <description>Simplest possible Java Webapp</description>
 
+    <!-- SonarQube properties -->
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.projectKey>hello-world-war</sonar.projectKey>
+        <sonar.projectName>Hello World WAR</sonar.projectName>
     </properties>
 
-    <!-- Nexus deployment -->
-    <distributionManagement>
-        <repository>
-            <id>nexus-creds</id>
-            <name>Nexus Releases</name>
-            <url>http://13.126.112.33:30081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-
-    <build>
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
-            </plugin>
-
-        </plugins>
-    </build>
-
-</project>
+    <!-- Nexu
