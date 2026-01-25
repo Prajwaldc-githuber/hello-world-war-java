@@ -1,42 +1,66 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.efsavage</groupId>
-	<artifactId>hello-world-war</artifactId>
-	<version>1.0.0</version>
-	<packaging>war</packaging>
-	<name>Hello World Web Application Repository</name>
-	<description>Simplest possible Java Webapp</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<properties>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.efsavage</groupId>
+    <artifactId>hello-world-war</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+    <name>Hello World Web Application Repository</name>
+    <description>Simplest possible Java Webapp</description>
+
+    <!-- SonarQube Properties -->
+    <properties>
         <sonar.projectKey>java-maven</sonar.projectKey>
         <sonar.host.url>http://13.53.119.232:900/</sonar.host.url>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
-	<distributionManagement>
+    <!-- Nexus Repository for Deployment -->
+    <distributionManagement>
         <repository>
             <id>nexus_credentials</id>
             <name>Nexus Release</name>
             <url>http://13.233.95.227:8081/repository/maven-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>nexus_credentials</id>
+            <name>Nexus Snapshots</name>
+            <url>http://13.233.95.227:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.5.v20120716</version>
-				<configuration>
-					<scanIntervalSeconds>0</scanIntervalSeconds>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
-			</plugin>
-		</plugins>
-	</build>
+
+    <build>
+        <plugins>
+            <!-- Jetty Plugin for local testing -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.5.v20120716</version>
+                <configuration>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+
+            <!-- WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+
+            <!-- Sonar Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.10.0.2594</version>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
