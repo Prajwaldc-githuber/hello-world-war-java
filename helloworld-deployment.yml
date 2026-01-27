@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-deployment
-  namespace: argocd
   labels:
     app: helloworld
 spec:
@@ -17,24 +16,23 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: 898774460249.dkr.ecr.ap-south-1.amazonaws.com/demo-repo:latest
+          image: 794550284447.dkr.ecr.ap-south-1.amazonaws.com/ecr-repo:1.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
       imagePullSecrets:
-        - name: ecr-secret
+        - name: aws-creds
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: helloworld-service
-  namespace: argocd
 spec:
   selector:
     app: helloworld
   type: NodePort
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8090
+      targetPort: 8090
       nodePort: 30080
