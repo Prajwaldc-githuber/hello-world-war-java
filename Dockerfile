@@ -11,5 +11,3 @@ COPY --from=builder /app/target/*.war webapps/ROOT.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
-
-this is to check git pull & fetch
